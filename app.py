@@ -6,6 +6,8 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 import openai
 import os
+import requests
+
 
 # Initialize the Dash app
 app = dash.Dash(__name__)
@@ -1115,18 +1117,28 @@ Respond in 2-3 sentences max. Be direct and insightful."""
         
         messages[-1] = {"role": "user", "content": current_message}
         
-         # GPT-3.5-turbo call
+        # GPT-3.5-turbo via REST
         try:
-            response = openai.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=messages,
-                temperature=0.7,
-                max_tokens=150
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            }
+            payload = {
+                "model": "gpt-3.5-turbo",
+                "messages": messages,
+                "temperature": 0.7,
+                "max_tokens": 150
+            }
+            resp = requests.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=30
             )
-            ai_response = response.choices[0].message.content.strip()
+            resp.raise_for_status()
+            ai_response = resp.json()["choices"][0]["message"]["content"].strip()
         except Exception as e:
             ai_response = f"🚨 AI error: {e}"
-
 
 
         if len(history) > 6:
