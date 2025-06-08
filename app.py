@@ -1115,21 +1115,20 @@ Respond in 2-3 sentences max. Be direct and insightful."""
         
         messages[-1] = {"role": "user", "content": current_message}
         
-
          # GPT-3.5-turbo call
         try:
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=messages,
-                max_tokens=150,
-                temperature=0.7
+                temperature=0.7,
+                max_tokens=150
             )
             ai_response = response.choices[0].message.content.strip()
         except Exception as e:
             ai_response = f"🚨 AI error: {e}"
 
 
-        
+
         if len(history) > 6:
             history = history[-6:]
         
