@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import dash_bootstrap_components as dbc
-from openai import OpenAI
+import openai
 import os
 
 # Initialize the Dash app
@@ -1026,6 +1026,7 @@ def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_
             current_filtered = current_filtered.loc[current_filtered['Material_Category'] == new_material].copy()
         
         api_key = load_api_key()
+        openai.api_key = api_key
         if not api_key:
             error_msg = "🤖 AI assistant unavailable (API key not found)"
             new_chat = (current_chat or []) + [
@@ -1040,7 +1041,7 @@ def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_
             ]
             return new_chat, "", current_material, current_year_range, stored_history
         
-        client = OpenAI(api_key=api_key)
+    
         
         # Create data analysis for AI
         total_projects = len(current_filtered)
@@ -1114,17 +1115,20 @@ Respond in 2-3 sentences max. Be direct and insightful."""
         
         messages[-1] = {"role": "user", "content": current_message}
         
-        # GPT-3.5-turbo call
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=messages,
-            max_tokens=50,
-            temperature=0.7
-        )
-        
-        ai_response = response.choices[0].message.content.strip()
-        
-        history.append({"role": "assistant", "content": ai_response})
+
+         # GPT-3.5-turbo call
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=messages,
+                max_tokens=150,
+                temperature=0.7
+            )
+            ai_response = response.choices[0].message.content.strip()
+        except Exception as e:
+            ai_response = f"🚨 AI error: {e}"
+
+
         
         if len(history) > 6:
             history = history[-6:]
