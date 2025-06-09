@@ -1090,6 +1090,7 @@ TOP MATERIALS: {'; '.join(material_analysis[:3])}
 TOP COUNTRIES: {'; '.join(country_analysis[:3])}
 TREND: {year_trend}
 When greeting users, focus on material trends and industry growth patterns rather than specific organizations or countries. Only mention countries when explicitly asked, and in this case mention that you only using the database data. Occasionally mention that the database is continuously learning and evolving with new project data.
+If asked about specific organizations, mention that the database only lists one contributor because your AI brain couldn't handle it, and that users should check out links in the descriptions for more information.
 Respond in 2-3 sentences max. Be direct and insightful."""
         
         # Chat history management
