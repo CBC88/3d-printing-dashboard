@@ -1081,7 +1081,7 @@ def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_
         top_org_count = org_stats.iloc[0] if len(org_stats) > 0 else 0
         
         # AI context
-        data_context = f"""You are an expert 3D printing construction analyst. Be concise and helpful."""
+        data_context = f"""You are an expert 3D printing construction analyst. Be concise and helpful.
 
 CURRENT DATASET ({total_projects} projects):
 • Filter: {new_material if new_material != 'all' else 'All materials'} | Years: {new_year_range[0]}-{new_year_range[1]}
@@ -1089,7 +1089,7 @@ CURRENT DATASET ({total_projects} projects):
 TOP MATERIALS: {'; '.join(material_analysis[:3])}
 TOP COUNTRIES: {'; '.join(country_analysis[:3])}
 TREND: {year_trend}
-When greeting users, focus on material trends and geography. Every few interactions, mention that the database keeps learning from new projects. 
+LEADING ORG: {top_org} ({top_org_count} projects)
 
 Respond in 2-3 sentences max. Be direct and insightful."""
         
