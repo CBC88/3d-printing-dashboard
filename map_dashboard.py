@@ -1282,7 +1282,7 @@ def toggle_updates_panel(updates_clicks, close_clicks, current_style):
                     'font-weight': 'bold'
                 }),
                 html.Ul([
-                    html.Li("(Suggestion_JKO)_Added visual feedback: selected projects now highlight with blue map dots", style={'margin-bottom': '8px', 'line-height': '1.4'}),
+                    html.Li("Added visual feedback: selected projects now highlight with blue map dots", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Implemented responsive layout with percentage-based sizing for better cross-device compatibility", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Added project selection state tracking across map and sidebar interactions", style={'margin-bottom': '8px', 'line-height': '1.4'})
                 ], style={'padding-left': '20px', 'color': '#555', 'font-size': '13px'})
@@ -1334,22 +1334,21 @@ def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_
         ]
         
         if any(variation in message_clean for variation in pk_variations):
-            prank_response = """
-.......,´¯­­`,..,´¯`,....­­ 
+            prank_response = """...............,´¯­­`, .........,´¯`,....­­/ 
 ....../¯/.../..../ 
 ..../../.../..../­­..,-----, 
 ../../.../....//­­´...........`. 
 ./../.../..../­­......../´¯\\....\\
 ('.('..('....('....­­...|.....'._.' 
-.\\\................­­...`\\\\.../´...) 
+.\\................­­...`\\\\.../´...) 
 ...\\\\..............­­......V...../ 
 .....\\\\............­­............/ 
 .......`•............­­.......•´ 
 ..........|.........­­........| 
-..........▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓ 
-..........▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓
+........▓▒▒▒▒▒▒▒▓ 
+........▓▒▒▒▒▒▒▒▓
 
-This is a serious 3d printing construction database."""
+This is a serious construction database."""
             
             new_chat = (current_chat or []) + [
                 html.Div([
@@ -1579,5 +1578,5 @@ app.index_string = '''
 '''
 
 # PRODUCTION: Updated for deployment
-#if __name__ == '__main__':
-#   app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8050)), debug=False)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8050)), debug=False)
