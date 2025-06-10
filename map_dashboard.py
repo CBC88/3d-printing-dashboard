@@ -1334,7 +1334,8 @@ def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_
         ]
         
         if any(variation in message_clean for variation in pk_variations):
-            prank_response = """...............,´¯­­`, .........,´¯`,....­­/ 
+            prank_response = """
+.......,´¯­­`,..,´¯`,....­­ 
 ....../¯/.../..../ 
 ..../../.../..../­­..,-----, 
 ../../.../....//­­´...........`. 
@@ -1345,10 +1346,10 @@ def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_
 .....\\\\............­­............/ 
 .......`•............­­.......•´ 
 ..........|.........­­........| 
-........▓▒▒▒▒▒▒▒▓ 
-........▓▒▒▒▒▒▒▒▓
+..........▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓ 
+..........▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓
 
-This is a serious construction database."""
+This is a serious 3d printing construction database."""
             
             new_chat = (current_chat or []) + [
                 html.Div([
