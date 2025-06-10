@@ -1361,10 +1361,38 @@ This is a serious construction database."""
                 ], style={'margin-bottom': '6px', 'font-size': '9px'})
             ]
             
-            if len(new_chat) > 20:
-                new_chat = new_chat[-20:]
-            
             return new_chat, "", current_material, current_year_range, stored_history
+        
+        # Simple response without OpenAI
+        ai_response = "🤖 Chat temporarily disabled. All other features work normally!"
+        
+        new_chat = (current_chat or []) + [
+            html.Div([
+                html.B("You: ", style={'color': '#333'}),
+                html.Span(message, style={'color': '#555'})
+            ], style={'margin-bottom': '3px', 'font-size': '9px'}),
+            html.Div([
+                html.B("AI: ", style={'color': '#0066cc'}),
+                html.Span(ai_response, style={'color': '#333'})
+            ], style={'margin-bottom': '6px', 'font-size': '9px'})
+        ]
+        
+        return new_chat, "", current_material, current_year_range, stored_history
+        
+    except Exception as e:
+        # Fallback for any errors
+        error_msg = "🤖 Chat temporarily unavailable. All other features work!"
+        new_chat = (current_chat or []) + [
+            html.Div([
+                html.B("You: ", style={'color': '#333'}),
+                html.Span(message, style={'color': '#555'})
+            ], style={'margin-bottom': '3px', 'font-size': '9px'}),
+            html.Div([
+                html.B("AI: ", style={'color': '#orange'}),
+                html.Span(error_msg, style={'color': '#666'})
+            ], style={'margin-bottom': '6px', 'font-size': '9px'})
+        ]
+        return new_chat, "", current_material, current_year_range, stored_history
         
         # Regular processing continues...
         # Parse filter commands
