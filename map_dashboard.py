@@ -1318,8 +1318,7 @@ def toggle_updates_panel(updates_clicks, close_clicks, current_style):
      State('material-filter', 'value'),
      State('year-filter', 'value'),
      State('chat-history-store', 'children')]
-)
-def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_material, current_year_range, stored_history):
+)def update_chat_with_filters(n_clicks, n_submit, message, current_chat, current_material, current_year_range, stored_history):
     if not (n_clicks or n_submit) or not message:
         return current_chat or [], "", current_material, current_year_range, stored_history
     
