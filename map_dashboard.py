@@ -1282,7 +1282,7 @@ def toggle_updates_panel(updates_clicks, close_clicks, current_style):
                     'font-weight': 'bold'
                 }),
                 html.Ul([
-                    html.Li("Added visual feedback: selected projects now highlight with blue map dots", style={'margin-bottom': '8px', 'line-height': '1.4'}),
+                    html.Li("-Suggestion JKO- Added visual feedback: selected projects now highlight with blue map dots", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Implemented responsive layout with percentage-based sizing for better cross-device compatibility", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Added project selection state tracking across map and sidebar interactions", style={'margin-bottom': '8px', 'line-height': '1.4'})
                 ], style={'padding-left': '20px', 'color': '#555', 'font-size': '13px'})
