@@ -1500,7 +1500,7 @@ Be conversational and entertaining while staying informative. Avoid mentioning s
             model="gpt-3.5-turbo",
             messages=messages,
             max_tokens=100,
-            temperature= 1.0
+            temperature= 0.8
         )
         
         ai_response = response.choices[0].message.content.strip()
