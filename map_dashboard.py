@@ -1498,8 +1498,8 @@ Be conversational and entertaining while staying informative. Avoid mentioning s
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages,
-            max_tokens=50,
-            temperature=0.7
+            max_tokens=100,
+            temperature= 1.0
         )
         
         ai_response = response.choices[0].message.content.strip()
