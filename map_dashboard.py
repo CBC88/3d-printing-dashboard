@@ -835,7 +835,7 @@ def update_dashboard_with_selection(material_filter, year_range, search_term, pr
                 lat=filtered_df.loc[selected_mask, 'Latitude'],
                 mode='markers',
                 marker=dict(
-                    size=11,  # 10% larger
+                    size=15,  # 10% larger
                     color='blue',
                     opacity=0.9,  # Slightly more opaque
                     line=dict(width=2, color='white')  # Thicker border
@@ -1282,7 +1282,7 @@ def toggle_updates_panel(updates_clicks, close_clicks, current_style):
                     'font-weight': 'bold'
                 }),
                 html.Ul([
-                    html.Li("Added visual feedback: selected projects now highlight with blue map dots", style={'margin-bottom': '8px', 'line-height': '1.4'}),
+                    html.Li("Added visual feedback: selected projects now highlight with blue map dots_Suggestion JKO_", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Implemented responsive layout with percentage-based sizing for better cross-device compatibility", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Added project selection state tracking across map and sidebar interactions", style={'margin-bottom': '8px', 'line-height': '1.4'})
                 ], style={'padding-left': '20px', 'color': '#555', 'font-size': '13px'})
