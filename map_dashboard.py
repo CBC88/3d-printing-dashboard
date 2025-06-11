@@ -1364,7 +1364,7 @@ This is a serious construction database."""
             return new_chat, "", current_material, current_year_range, stored_history
         
         # Simple response without OpenAI
-        ai_response = "🤖 Chat temporarily disabled. All other features work normally!"
+        ai_response = "🤖 AI chat temporarily disabled. All other features work normally! Plot twist: The 'future' of construction is actually the past! Ralph Baker was already thinking about WAAMing way back in 1925, and William Urschel built the world's first 3D-printed concrete building in 1939. Modern tech, century-old vision"
         
         new_chat = (current_chat or []) + [
             html.Div([
