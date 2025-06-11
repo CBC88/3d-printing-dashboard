@@ -1282,7 +1282,7 @@ def toggle_updates_panel(updates_clicks, close_clicks, current_style):
                     'font-weight': 'bold'
                 }),
                 html.Ul([
-                    html.Li("-Suggestion JKO- Added visual feedback: selected projects now highlight with blue map dots", style={'margin-bottom': '8px', 'line-height': '1.4'}),
+                    html.Li("Added visual feedback: selected projects now highlight with blue map dots", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Implemented responsive layout with percentage-based sizing for better cross-device compatibility", style={'margin-bottom': '8px', 'line-height': '1.4'}),
                     html.Li("Added project selection state tracking across map and sidebar interactions", style={'margin-bottom': '8px', 'line-height': '1.4'})
                 ], style={'padding-left': '20px', 'color': '#555', 'font-size': '13px'})
@@ -1361,38 +1361,10 @@ This is a serious construction database."""
                 ], style={'margin-bottom': '6px', 'font-size': '9px'})
             ]
             
+            if len(new_chat) > 20:
+                new_chat = new_chat[-20:]
+            
             return new_chat, "", current_material, current_year_range, stored_history
-        
-        # Simple response without OpenAI
-        ai_response = "🤖 AI chat temporarily disabled. All other features work normally! Plot twist: The 'future' of construction is actually the past! Ralph Baker was already thinking about WAAMing way back in 1925, and William Urschel built the world's first 3D-printed concrete building in 1939. Modern tech, century-old vision"
-        
-        new_chat = (current_chat or []) + [
-            html.Div([
-                html.B("You: ", style={'color': '#333'}),
-                html.Span(message, style={'color': '#555'})
-            ], style={'margin-bottom': '3px', 'font-size': '9px'}),
-            html.Div([
-                html.B("AI: ", style={'color': '#0066cc'}),
-                html.Span(ai_response, style={'color': '#333'})
-            ], style={'margin-bottom': '6px', 'font-size': '9px'})
-        ]
-        
-        return new_chat, "", current_material, current_year_range, stored_history
-        
-    except Exception as e:
-        # Fallback for any errors
-        error_msg = "🤖 Chat temporarily unavailable. All other features work!"
-        new_chat = (current_chat or []) + [
-            html.Div([
-                html.B("You: ", style={'color': '#333'}),
-                html.Span(message, style={'color': '#555'})
-            ], style={'margin-bottom': '3px', 'font-size': '9px'}),
-            html.Div([
-                html.B("AI: ", style={'color': '#orange'}),
-                html.Span(error_msg, style={'color': '#666'})
-            ], style={'margin-bottom': '6px', 'font-size': '9px'})
-        ]
-        return new_chat, "", current_material, current_year_range, stored_history
         
         # Regular processing continues...
         # Parse filter commands
@@ -1606,5 +1578,5 @@ app.index_string = '''
 '''
 
 # PRODUCTION: Updated for deployment
-#if __name__ == '__main__':
- #   app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8050)), debug=False)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8050)), debug=False)
