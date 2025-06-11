@@ -402,7 +402,7 @@ app.layout = html.Div([
                 })
             ], style={'display': 'flex', 'align-items': 'center', 'margin-bottom': '8px'})
         ])
-    ], style={
+    ], className='sidebar', style={
         'position': 'absolute',
         'top': '70px',
         'left': '20px',
@@ -425,7 +425,7 @@ app.layout = html.Div([
             style={'height': '120px', 'width': '100%'},
             config={'displayModeBar': False}
         )
-    ], style={
+    ], className='timeline', style={
         'position': 'absolute',
         'bottom': '20px',
         'left': 'calc(25vw + 40px)',  # RESPONSIVE: Sidebar width + margin
@@ -1564,6 +1564,22 @@ app.index_string = '''
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
+            }
+            
+            /* MOBILE CSS */
+            @media (max-width: 768px) {
+                /* Stack sidebar on top on mobile */
+                .sidebar { 
+                    position: relative !important;
+                    width: 100vw !important;
+                    height: auto !important;
+                    top: 60px !important;
+                    left: 0 !important;
+                }
+                /* Hide timeline on small screens */
+                .timeline { display: none; }
+                /* Smaller header text */
+                .header { font-size: 14px !important; }
             }
         </style>
     </head>
