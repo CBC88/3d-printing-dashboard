@@ -94,18 +94,14 @@ def parse_filter_command(message):
             commands['year_range'] = [min(start_year, end_year), max(start_year, end_year)]
             break
     
-   if 'year_range' not in commands:
-    year_matches = re.findall(r'\b(20[0-9]{2}|19[0-9]{2})\b', message)
-    # Only apply year filters if user uses filter keywords
-    filter_keywords = ['filter', 'show', 'from', 'between', 'to', 'projects in', 'built in']
-    has_filter_intent = any(keyword in message_lower for keyword in filter_keywords)
-    
-    if has_filter_intent and len(year_matches) >= 2:
-        years = [int(y) for y in year_matches[:2]]
-        commands['year_range'] = [min(years), max(years)]
-    elif has_filter_intent and len(year_matches) == 1:
-        year = int(year_matches[0])
-        commands['year_range'] = [year, year]
+    if 'year_range' not in commands:
+        year_matches = re.findall(r'\b(20[0-9]{2}|19[0-9]{2})\b', message)
+        if len(year_matches) >= 2:
+            years = [int(y) for y in year_matches[:2]]
+            commands['year_range'] = [min(years), max(years)]
+        elif len(year_matches) == 1:
+            year = int(year_matches[0])
+            commands['year_range'] = [year, year]
     
     # Reset command
     reset_keywords = ['reset', 'clear', 'all projects', 'show all', 'remove filters', 'no filter']
